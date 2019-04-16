@@ -11,7 +11,7 @@
 		2476CE7D226120C20081543C /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476CE7C226120C20081543C /* CalendarVC.swift */; };
 		2476CE7F226120F30081543C /* HomeworkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2476CE7E226120F30081543C /* HomeworkVC.swift */; };
 		24D774CD226638CE0083CD29 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24D774CC226638CE0083CD29 /* HealthKit.framework */; };
-		24D774D122663A800083CD29 /* HealthKitSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D774D022663A800083CD29 /* HealthKitSetup.swift */; };
+		24D774D122663A800083CD29 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D774D022663A800083CD29 /* HealthKitManager.swift */; };
 		628E547022611E5600AD4704 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628E546F22611E5600AD4704 /* AppDelegate.swift */; };
 		628E547222611E5600AD4704 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628E547122611E5600AD4704 /* ViewController.swift */; };
 		628E547522611E5600AD4704 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 628E547322611E5600AD4704 /* Main.storyboard */; };
@@ -44,7 +44,7 @@
 		2476CE7E226120F30081543C /* HomeworkVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeworkVC.swift; sourceTree = "<group>"; };
 		24D774CC226638CE0083CD29 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		24D774CE226638CE0083CD29 /* Tracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tracker.entitlements; sourceTree = "<group>"; };
-		24D774D022663A800083CD29 /* HealthKitSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitSetup.swift; sourceTree = "<group>"; };
+		24D774D022663A800083CD29 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		628E546C22611E5600AD4704 /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		628E546F22611E5600AD4704 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		628E547122611E5600AD4704 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				2476CE7A226120980081543C /* HealthVC.swift */,
-				24D774D022663A800083CD29 /* HealthKitSetup.swift */,
+				24D774D022663A800083CD29 /* HealthKitManager.swift */,
 			);
 			path = Health;
 			sourceTree = "<group>";
@@ -297,7 +297,7 @@
 			files = (
 				628E547222611E5600AD4704 /* ViewController.swift in Sources */,
 				2476CE7B226120980081543C /* HealthVC.swift in Sources */,
-				24D774D122663A800083CD29 /* HealthKitSetup.swift in Sources */,
+				24D774D122663A800083CD29 /* HealthKitManager.swift in Sources */,
 				2476CE7F226120F30081543C /* HomeworkVC.swift in Sources */,
 				2476CE7D226120C20081543C /* CalendarVC.swift in Sources */,
 				628E547022611E5600AD4704 /* AppDelegate.swift in Sources */,
@@ -479,6 +479,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Z6P82U77X;
 				INFOPLIST_FILE = Tracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -486,7 +487,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = group46.Tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -498,6 +499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Z6P82U77X;
 				INFOPLIST_FILE = Tracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -505,7 +507,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = group46.Tracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

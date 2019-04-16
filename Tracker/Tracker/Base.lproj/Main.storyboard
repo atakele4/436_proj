@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Health Tracker-->
+        <!--Health-->
         <scene sceneID="jji-hR-IYK">
             <objects>
                 <viewController id="upO-O4-ny9" customClass="HealthVC" customModule="Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -20,13 +20,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="HIf-BB-cYY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Health Tracker" id="UMb-4X-OF7"/>
+                    <tabBarItem key="tabBarItem" title="Health" id="UMb-4X-OF7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bt-fv-afM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="354" y="-614"/>
         </scene>
-        <!--Homework Tracker-->
+        <!--HW-->
         <scene sceneID="cRv-3D-FCi">
             <objects>
                 <viewController id="Yed-Tr-AFI" customClass="HomeworkVC" customModule="Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,7 +36,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="L9p-cZ-zO5"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Homework Tracker" id="k88-1O-3F3"/>
+                    <tabBarItem key="tabBarItem" title="HW" id="k88-1O-3F3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pD-7B-zSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

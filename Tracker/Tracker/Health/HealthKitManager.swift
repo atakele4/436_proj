@@ -9,9 +9,15 @@
 import Foundation
 
 
-class HealthKitSetup{
+class HealthKitManager{
     
     class func authorizeHealthKit(completion: @escaping (Bool, Error?) -> Swift.Void) {
+    
+    }
+    
+    func getHealthKitPerms(){
+        
+        
         
     }
     
