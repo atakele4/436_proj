@@ -10,8 +10,25 @@ import Foundation
 
 class HealthVC: UIViewController {
 
-
+    @IBOutlet weak var label: UILabel!
     
-    
-    
+ 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        HealthKitSetupManager.authorizeHealthKit { (authorized, error) in
+            
+            guard authorized else {
+                
+                if let err = error {
+                    print("\(err.localizedDescription)")
+                }
+                return
+            }
+            
+            print("HK Successfully Auth")
+        }
+        
+    }
+  
 }
