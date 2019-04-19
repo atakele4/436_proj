@@ -23,11 +23,16 @@ class HealthProfileVC: UIViewController {
         
         //auth the hk
         HealthKitSetupManager.authorizeHealthKit { (authorized, error) in
-           
+            
             if authorized {
                 DispatchQueue.main.async {
                     self.hkBTN.setTitle("HealthKit Authorized", for: .normal)
                     self.hkBTN.isEnabled = false
+                    self.hkBTN.layer.borderColor = UIColor.blue.cgColor
+                    self.hkBTN.layer.borderWidth = 1
+                    self.hkBTN.layer.cornerRadius = 3
+                    self.errorTF()
+                    
                 }
                 
             }
@@ -35,9 +40,8 @@ class HealthProfileVC: UIViewController {
                 DispatchQueue.main.async {
                     self.hkBTN.setTitle("Enable in Health App", for: .normal)
                     self.hkBTN.layer.borderColor = UIColor.red.cgColor
-                    self.hkBTN.layer.borderWidth = 3
+                    self.hkBTN.layer.borderWidth = 2
                     self.hkBTN.layer.cornerRadius = 3
-                    self.hkBTN.isEnabled = false
                 }
             }
         }
@@ -53,7 +57,7 @@ class HealthProfileVC: UIViewController {
         nameTF.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
         if let un = UserDefaults.standard.string(forKey: "healthUserName"){
-             nameTF.text = un
+            nameTF.text = un
         }
         
         //setup a tap recognizer to resign first responder

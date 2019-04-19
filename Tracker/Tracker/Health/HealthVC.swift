@@ -11,8 +11,6 @@ import HealthKit
 
 class HealthVC: UIViewController {
     
-    @IBOutlet weak var label: UILabel!
-    
     @IBOutlet weak var titleBar: UINavigationItem!
     
     @IBOutlet weak var profileButton: UIBarButtonItem!
@@ -32,7 +30,6 @@ class HealthVC: UIViewController {
         if !firstTime {
             performSegue(withIdentifier: "profileSegID", sender: nil)
             UserDefaults.standard.set(true, forKey: "firstTime")
-             
         }
         
         let userName = UserDefaults.standard.string(forKey: "healthUserName")
