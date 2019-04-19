@@ -13,6 +13,7 @@ class HealthVC: UIViewController {
     
     @IBOutlet weak var titleBar: UINavigationItem!
     
+    @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var profileButton: UIBarButtonItem!
     
     override func viewDidLoad() {
@@ -24,7 +25,6 @@ class HealthVC: UIViewController {
     func loadData(){
         
         let firstTime = UserDefaults.standard.bool(forKey: "firstTime")
-        print("Ft \(firstTime)")
         
         //if its the firsttime setup
         if !firstTime {
@@ -36,9 +36,11 @@ class HealthVC: UIViewController {
         
         titleBar.title = (userName == nil ? "Setup your user profile ->" : userName)
         
+        welcomeLabel.text = (userName == nil ? "  Welcome!" : " Welcome \(userName!)!")
+        
         do {
             let userAgeSexAndBloodType = try HKDataManager.getAgeSexBloodType()
-            
+            print("sex: \(userAgeSexAndBloodType.bioSex)")
             switch userAgeSexAndBloodType.bioSex {
             case .female: self.profileButton.title = "👩🏻"
             case .male: self.profileButton.title = "👨🏼"
@@ -46,7 +48,8 @@ class HealthVC: UIViewController {
             }
             
         } catch let error {
-            print("\(error.localizedDescription)")
+            print("err: \(error.localizedDescription)")
+            
         }
         
     }

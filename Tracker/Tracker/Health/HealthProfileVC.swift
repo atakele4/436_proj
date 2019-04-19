@@ -58,6 +58,7 @@ class HealthProfileVC: UIViewController {
         
         if let un = UserDefaults.standard.string(forKey: "healthUserName"){
             nameTF.text = un
+            goodTF()
         }
         
         //setup a tap recognizer to resign first responder

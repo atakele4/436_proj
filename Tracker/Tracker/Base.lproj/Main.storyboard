@@ -17,7 +17,23 @@
                     <view key="view" contentMode="scaleToFill" id="6Hy-Z6-Cb7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Welcome" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biN-eM-teM">
+                                <rect key="frame" x="0.0" y="94" width="375" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="biN-eM-teM" secondAttribute="height" multiplier="375:41" id="Koz-eC-Iaz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="biN-eM-teM" firstAttribute="top" secondItem="HIf-BB-cYY" secondAttribute="top" constant="30" id="CVR-IU-VRO"/>
+                            <constraint firstItem="biN-eM-teM" firstAttribute="leading" secondItem="HIf-BB-cYY" secondAttribute="leading" id="lM5-pW-pQq"/>
+                            <constraint firstItem="HIf-BB-cYY" firstAttribute="trailing" secondItem="biN-eM-teM" secondAttribute="trailing" id="re3-n2-vew"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HIf-BB-cYY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="hJ7-uk-UWz">
@@ -31,6 +47,7 @@
                     <connections>
                         <outlet property="profileButton" destination="R8K-ZO-Qut" id="Yej-lG-v43"/>
                         <outlet property="titleBar" destination="hJ7-uk-UWz" id="8JL-QB-XIk"/>
+                        <outlet property="welcomeLabel" destination="biN-eM-teM" id="QCy-pE-Oe4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bt-fv-afM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -40,7 +57,6 @@
         <!--Health ProfileVC-->
         <scene sceneID="QUe-41-sBD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="df9-I0-vOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="6r5-zH-4UM" customClass="HealthProfileVC" customModule="Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y2k-L6-Cpo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -88,6 +104,7 @@
                         <outlet property="nameTF" destination="Tso-XS-G5V" id="rtH-bH-yfj"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="df9-I0-vOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2084" y="-615.74212893553226"/>
         </scene>
