@@ -40,14 +40,25 @@ class HKDataManager {
             
         }
     }
-    class func getSteps(){
+    
+    //https://stackoverflow.com/questions/36559581/healthkit-swift-getting-todays-steps
+    class func getSteps(completion: @escaping (Double) -> Void){
         let store = HKHealthStore()
+        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
         
-        do{
-         
-            
+        let now = Date()
+        let startOfDay = Calendar.current.startOfDay(for: now)
+        let predicate = HKQuery.predicateForSamples(withStart: startOfDay, end: now, options: .strictStartDate)
+        
+        let query = HKStatisticsQuery(quantityType: stepsQuantityType, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, _ in
+            guard let result = result, let sum = result.sumQuantity() else {
+                completion(0.0)
+                return
+            }
+            completion(sum.doubleValue(for: HKUnit.count()))
         }
         
+        store.execute(query)
         
     }
     

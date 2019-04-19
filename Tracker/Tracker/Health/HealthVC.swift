@@ -48,7 +48,6 @@ class HealthVC: UIViewController {
             case .male: self.profileButton.title = "👨🏼"
             default: self.profileButton.title = "Edit"
                 
-                
             }
             
         } catch let error {

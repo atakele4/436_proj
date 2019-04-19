@@ -79,8 +79,9 @@ class HealthProfileVC: UIViewController {
         } else {
             errorTF()
         }
-        self.view.resignFirstResponder()
+       
         resignFirstResponder()
+        self.view.endEditing(true)
     }
     
     //#selector func for tf change
