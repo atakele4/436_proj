@@ -40,6 +40,16 @@ class HKDataManager {
             
         }
     }
+    class func getSteps(){
+        let store = HKHealthStore()
+        
+        do{
+         
+            
+        }
+        
+        
+    }
     
     func bloodstringRepresentation(t: HKBloodType) -> String {
         var r:String = ""

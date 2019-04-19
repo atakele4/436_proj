@@ -15,6 +15,8 @@ class HealthVC: UIViewController {
     
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var profileButton: UIBarButtonItem!
+    @IBOutlet weak var stepGoalLabel: UILabel!
+    @IBOutlet weak var stepPBar: UIProgressView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +42,13 @@ class HealthVC: UIViewController {
         
         do {
             let userAgeSexAndBloodType = try HKDataManager.getAgeSexBloodType()
-            print("sex: \(userAgeSexAndBloodType.bioSex)")
+         
             switch userAgeSexAndBloodType.bioSex {
             case .female: self.profileButton.title = "👩🏻"
             case .male: self.profileButton.title = "👨🏼"
             default: self.profileButton.title = "Edit"
+                
+                
             }
             
         } catch let error {
