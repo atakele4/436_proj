@@ -72,7 +72,7 @@
                                 <rect key="frame" x="0.0" y="185" width="375" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="alert" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uka-sr-HjN">
                                 <rect key="frame" x="121" y="326" width="133" height="30"/>
@@ -84,6 +84,12 @@
                                     <action selector="hkTapped:" destination="6r5-zH-4UM" eventType="touchUpInside" id="3Kq-MS-mJ5"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Daily Step Goal" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uQa-dX-zam">
+                                <rect key="frame" x="0.0" y="247" width="375" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -92,9 +98,12 @@
                             <constraint firstItem="4Xc-s7-1bL" firstAttribute="top" secondItem="st2-pT-zVe" secondAttribute="top" constant="21" id="PDW-0x-gvm"/>
                             <constraint firstItem="Uka-sr-HjN" firstAttribute="leading" secondItem="st2-pT-zVe" secondAttribute="leading" constant="121" id="RPU-qE-Kdg"/>
                             <constraint firstItem="Tso-XS-G5V" firstAttribute="trailing" secondItem="st2-pT-zVe" secondAttribute="trailing" id="Sl7-ac-1jw"/>
+                            <constraint firstItem="uQa-dX-zam" firstAttribute="top" secondItem="Tso-XS-G5V" secondAttribute="bottom" constant="32" id="Y9q-nT-sYP"/>
+                            <constraint firstItem="uQa-dX-zam" firstAttribute="leading" secondItem="st2-pT-zVe" secondAttribute="leading" id="bfX-pQ-wGn"/>
                             <constraint firstItem="Uka-sr-HjN" firstAttribute="centerY" secondItem="st2-pT-zVe" secondAttribute="centerY" id="eAq-tP-GKz"/>
                             <constraint firstItem="4Xc-s7-1bL" firstAttribute="leading" secondItem="st2-pT-zVe" secondAttribute="leading" constant="117" id="rpe-hY-J50"/>
                             <constraint firstItem="Tso-XS-G5V" firstAttribute="leading" secondItem="st2-pT-zVe" secondAttribute="leading" id="w9a-5J-Tq1"/>
+                            <constraint firstItem="st2-pT-zVe" firstAttribute="trailing" secondItem="uQa-dX-zam" secondAttribute="trailing" id="xnq-1G-M7h"/>
                             <constraint firstItem="st2-pT-zVe" firstAttribute="trailing" secondItem="Uka-sr-HjN" secondAttribute="trailing" constant="121" id="zjD-Pi-mJK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="st2-pT-zVe"/>
@@ -102,6 +111,7 @@
                     <connections>
                         <outlet property="hkBTN" destination="Uka-sr-HjN" id="LiO-iQ-aRy"/>
                         <outlet property="nameTF" destination="Tso-XS-G5V" id="rtH-bH-yfj"/>
+                        <outlet property="stepGoalTF" destination="uQa-dX-zam" id="744-Wz-oQj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="df9-I0-vOn" userLabel="First Responder" sceneMemberID="firstResponder"/>

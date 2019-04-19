@@ -13,12 +13,14 @@ class HealthProfileVC: UIViewController {
     
     
     @IBOutlet weak var nameTF: UITextField!
+    @IBOutlet weak var stepGoalTF: UITextField!
     
     @IBOutlet weak var hkBTN: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //setup the UI elements
         setupScreen()
         
         //auth the hk
@@ -31,7 +33,7 @@ class HealthProfileVC: UIViewController {
                     self.hkBTN.layer.borderColor = UIColor.blue.cgColor
                     self.hkBTN.layer.borderWidth = 1
                     self.hkBTN.layer.cornerRadius = 3
-                    self.errorTF()
+                    
                     
                 }
                 
@@ -45,6 +47,7 @@ class HealthProfileVC: UIViewController {
                 }
             }
         }
+        
     }
     
     func setupScreen(){
@@ -70,12 +73,13 @@ class HealthProfileVC: UIViewController {
     
     //resign first responder and change the color of it
     @objc func hideKeyboardByTappingOutside() {
+        print("BRO YOU TAPPED?")
         if nameTF.text != nil && nameTF.text != "" {
             goodTF()
         } else {
             errorTF()
         }
-        
+        self.view.resignFirstResponder()
         resignFirstResponder()
     }
     
@@ -88,6 +92,11 @@ class HealthProfileVC: UIViewController {
     @objc func back(sender: UIBarButtonItem) {
         if nameTF.text != nil && nameTF.text != "" {
             UserDefaults.standard.set(nameTF.text , forKey: "healthUserName")
+            
+            if stepGoalTF.text != nil && stepGoalTF.text != "" {
+                UserDefaults.standard.set(stepGoalTF.text , forKey: "healthStepGoal")
+            }
+            
             self.navigationController?.popViewController(animated: true)
         }else{
             errorTF()
