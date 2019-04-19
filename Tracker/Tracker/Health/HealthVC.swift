@@ -7,28 +7,60 @@
 //
 import UIKit
 import Foundation
+import HealthKit
 
 class HealthVC: UIViewController {
-
+    
     @IBOutlet weak var label: UILabel!
     
- 
+    @IBOutlet weak var titleBar: UINavigationItem!
+    
+    @IBOutlet weak var profileButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        HealthKitSetupManager.authorizeHealthKit { (authorized, error) in
+//        HealthKitSetupManager.authorizeHealthKit { (authorized, error) in
+//        
+//        }
+        loadData()
+    }
+    
+    func loadData(){
+        
+        let firstTime = UserDefaults.standard.bool(forKey: "firstTime")
+        print("Ft \(firstTime)")
+        
+        //if its the firsttime setup
+        if !firstTime {
+            performSegue(withIdentifier: "profileSegID", sender: nil)
+            UserDefaults.standard.set(true, forKey: "firstTime")
+        }
+        
+        let userName = UserDefaults.standard.string(forKey: "healthUserName")
+        
+        titleBar.title = (userName == nil ? "Setup your user profile ->" : userName)
+        
+        do {
+            let userAgeSexAndBloodType = try HKDataManager.getAgeSexBloodType()
             
-            guard authorized else {
-                
-                if let err = error {
-                    print("\(err.localizedDescription)")
-                }
-                return
+            switch userAgeSexAndBloodType.bioSex {
+            case .female: self.profileButton.title = "👩🏻"
+            case .male: self.profileButton.title = "👨🏼"
+            default: self.profileButton.title = "Edit"
             }
             
-            print("HK Successfully Auth")
+        } catch let error {
+            print("\(error.localizedDescription)")
         }
         
     }
-  
+    
+
+    
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
+    }
+    
+    
 }

@@ -10,33 +10,86 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Health-->
+        <!--HealthVC-->
         <scene sceneID="jji-hR-IYK">
             <objects>
-                <viewController id="upO-O4-ny9" customClass="HealthVC" customModule="Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="upO-O4-ny9" userLabel="HealthVC" customClass="HealthVC" customModule="Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Hy-Z6-Cb7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYF-uf-OQ0">
-                                <rect key="frame" x="166" y="183" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="HIf-BB-cYY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Health" id="UMb-4X-OF7"/>
+                    <navigationItem key="navigationItem" title="Title" id="hJ7-uk-UWz">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Hwy-hr-2an"/>
+                        <barButtonItem key="rightBarButtonItem" title="X" id="R8K-ZO-Qut">
+                            <connections>
+                                <segue destination="6r5-zH-4UM" kind="show" identifier="profileSegID" id="T2C-4d-WLY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="label" destination="yYF-uf-OQ0" id="Ef6-3s-7Au"/>
+                        <outlet property="profileButton" destination="R8K-ZO-Qut" id="Yej-lG-v43"/>
+                        <outlet property="titleBar" destination="hJ7-uk-UWz" id="8JL-QB-XIk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bt-fv-afM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="354" y="-614"/>
+            <point key="canvasLocation" x="1292" y="-614.84257871064472"/>
+        </scene>
+        <!--Health ProfileVC-->
+        <scene sceneID="QUe-41-sBD">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="df9-I0-vOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="6r5-zH-4UM" customClass="HealthProfileVC" customModule="Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y2k-L6-Cpo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xc-s7-1bL">
+                                <rect key="frame" x="117" y="85" width="142" height="39"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tso-XS-G5V">
+                                <rect key="frame" x="0.0" y="185" width="375" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uka-sr-HjN">
+                                <rect key="frame" x="121" y="326" width="133" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Uka-sr-HjN" secondAttribute="height" multiplier="133:30" id="3WA-XT-nzR"/>
+                                </constraints>
+                                <state key="normal" title="Authorize HealthKit"/>
+                                <connections>
+                                    <action selector="hkTapped:" destination="6r5-zH-4UM" eventType="touchUpInside" id="3Kq-MS-mJ5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="st2-pT-zVe" firstAttribute="trailing" secondItem="4Xc-s7-1bL" secondAttribute="trailing" constant="116" id="1eP-RB-may"/>
+                            <constraint firstItem="Tso-XS-G5V" firstAttribute="top" secondItem="4Xc-s7-1bL" secondAttribute="bottom" constant="61" id="9K4-ud-tuw"/>
+                            <constraint firstItem="4Xc-s7-1bL" firstAttribute="top" secondItem="st2-pT-zVe" secondAttribute="top" constant="21" id="PDW-0x-gvm"/>
+                            <constraint firstItem="Uka-sr-HjN" firstAttribute="leading" secondItem="st2-pT-zVe" secondAttribute="leading" constant="121" id="RPU-qE-Kdg"/>
+                            <constraint firstItem="Tso-XS-G5V" firstAttribute="trailing" secondItem="st2-pT-zVe" secondAttribute="trailing" id="Sl7-ac-1jw"/>
+                            <constraint firstItem="Uka-sr-HjN" firstAttribute="centerY" secondItem="st2-pT-zVe" secondAttribute="centerY" id="eAq-tP-GKz"/>
+                            <constraint firstItem="4Xc-s7-1bL" firstAttribute="leading" secondItem="st2-pT-zVe" secondAttribute="leading" constant="117" id="rpe-hY-J50"/>
+                            <constraint firstItem="Tso-XS-G5V" firstAttribute="leading" secondItem="st2-pT-zVe" secondAttribute="leading" id="w9a-5J-Tq1"/>
+                            <constraint firstItem="st2-pT-zVe" firstAttribute="trailing" secondItem="Uka-sr-HjN" secondAttribute="trailing" constant="121" id="zjD-Pi-mJK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="st2-pT-zVe"/>
+                    </view>
+                    <connections>
+                        <outlet property="hkBTN" destination="Uka-sr-HjN" id="LiO-iQ-aRy"/>
+                        <outlet property="nameTF" destination="Tso-XS-G5V" id="rtH-bH-yfj"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2084" y="-615.74212893553226"/>
         </scene>
         <!--HW-->
         <scene sceneID="cRv-3D-FCi">
@@ -65,7 +118,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="Yed-Tr-AFI" kind="relationship" relationship="viewControllers" id="4ZH-fE-2CT"/>
-                        <segue destination="upO-O4-ny9" kind="relationship" relationship="viewControllers" id="htC-wV-zeY"/>
+                        <segue destination="7GY-o0-nkf" kind="relationship" relationship="viewControllers" id="htC-wV-zeY"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="AQo-mP-zhB"/>
                     </connections>
                 </tabBarController>
@@ -88,6 +141,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="530" y="275"/>
+        </scene>
+        <!--Health-->
+        <scene sceneID="twq-mT-0es">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7GY-o0-nkf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Health" id="UMb-4X-OF7"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="D7V-fT-WNb">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="upO-O4-ny9" kind="relationship" relationship="rootViewController" id="THQ-s9-aSu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OHh-Ju-FJ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="352.80000000000001" y="-614.84257871064472"/>
         </scene>
     </scenes>
 </document>

@@ -25,21 +25,20 @@ class HealthKitSetupManager{
             return
         }
         
-        
         guard let dateOfBirth = HKObjectType.characteristicType(forIdentifier: .dateOfBirth),
             let bloodType = HKObjectType.characteristicType(forIdentifier: .bloodType),
             let biologicalSex = HKObjectType.characteristicType(forIdentifier: .biologicalSex),
             let bodyMassIndex = HKObjectType.quantityType(forIdentifier: .bodyMassIndex),
             let height = HKObjectType.quantityType(forIdentifier: .height),
-            let bodyMass = HKObjectType.quantityType(forIdentifier: .bodyMass),
-            let activeEnergy = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned) else {
+            let bodyMass = HKObjectType.quantityType(forIdentifier: .bodyMass)
+             else {
                 
                 completion(false, HealthkitSetupError.dataTypeNotAvailable)
                 return
         }
         
         
-        let hkTypesToWrite: Set<HKSampleType> = [bodyMassIndex, activeEnergy, HKObjectType.workoutType()]
+        let hkTypesToWrite: Set<HKSampleType> = []
         
         let hkTypeToRead: Set<HKObjectType> = [dateOfBirth, bloodType, biologicalSex, bodyMassIndex, height, bodyMass, HKObjectType.workoutType()]
         
