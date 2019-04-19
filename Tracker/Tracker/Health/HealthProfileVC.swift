@@ -20,16 +20,20 @@ class HealthProfileVC: UIViewController {
         super.viewDidLoad()
         
         setupScreen()
+        
+        //auth the hk
         HealthKitSetupManager.authorizeHealthKit { (authorized, error) in
+           
             if authorized {
                 DispatchQueue.main.async {
                     self.hkBTN.setTitle("HealthKit Authorized", for: .normal)
                     self.hkBTN.isEnabled = false
                 }
                 
-            }else {
+            }
+            else {
                 DispatchQueue.main.async {
-                    self.hkBTN.setTitle("HealthKit Unauthorized Enable in Settings", for: .normal)
+                    self.hkBTN.setTitle("Enable in Health App", for: .normal)
                     self.hkBTN.layer.borderColor = UIColor.red.cgColor
                     self.hkBTN.layer.borderWidth = 3
                     self.hkBTN.layer.cornerRadius = 3
@@ -45,25 +49,21 @@ class HealthProfileVC: UIViewController {
         let newBackButton = UIBarButtonItem(title: "<- Back", style: UIBarButtonItem.Style.plain, target: self, action: #selector(HealthProfileVC.back(sender:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         
+        //add an observer for the tf change
         nameTF.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
-        let un = UserDefaults.standard.string(forKey: "healthUserName")
-        
-        if un != nil || un != "" {
-            nameTF.text = un
+        if let un = UserDefaults.standard.string(forKey: "healthUserName"){
+             nameTF.text = un
         }
         
-        hkBTN.layer.borderColor = UIColor.blue.cgColor
-        hkBTN.layer.borderWidth = 3
-        hkBTN.layer.cornerRadius = 3
-        
-        
+        //setup a tap recognizer to resign first responder
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboardByTappingOutside))
         
         self.view.addGestureRecognizer(tap)
         
     }
     
+    //resign first responder and change the color of it
     @objc func hideKeyboardByTappingOutside() {
         if nameTF.text != nil && nameTF.text != "" {
             goodTF()
@@ -74,6 +74,7 @@ class HealthProfileVC: UIViewController {
         resignFirstResponder()
     }
     
+    //#selector func for tf change
     @objc func textFieldDidChange(){
         goodTF()
     }
@@ -98,7 +99,7 @@ class HealthProfileVC: UIViewController {
     //makes a red border around the textfield
     func errorTF (){
         nameTF.layer.borderColor = UIColor.red.cgColor
-        nameTF.layer.borderWidth = 3
+        nameTF.layer.borderWidth = 2
         nameTF.layer.cornerRadius = 3
         nameTF.placeholder = "THIS FIELD IS REQUIRED"
     }

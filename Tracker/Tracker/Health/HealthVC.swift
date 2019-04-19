@@ -20,9 +20,6 @@ class HealthVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        HealthKitSetupManager.authorizeHealthKit { (authorized, error) in
-//        
-//        }
         loadData()
     }
     
@@ -35,6 +32,7 @@ class HealthVC: UIViewController {
         if !firstTime {
             performSegue(withIdentifier: "profileSegID", sender: nil)
             UserDefaults.standard.set(true, forKey: "firstTime")
+             
         }
         
         let userName = UserDefaults.standard.string(forKey: "healthUserName")
@@ -55,8 +53,6 @@ class HealthVC: UIViewController {
         }
         
     }
-    
-
     
     override func viewDidAppear(_ animated: Bool) {
         loadData()
