@@ -70,6 +70,8 @@ class HealthVC: UIViewController {
                 self.stepPBar.layer.borderColor  = UIColor.blue.cgColor
                 self.stepPBar.layer.borderWidth = 0.3
                 
+                
+                
                 //TODO MAKE SURE THAT THIS IS CORRECT AND FOR THE ENTIRE WEEK AND NOT JUST ONE DAY
                 self.barChartView.chartDescription?.text = "Steps walked in the past week"
                 self.barChartDataEntry.append(BarChartDataEntry(x: 1, y: steps))
