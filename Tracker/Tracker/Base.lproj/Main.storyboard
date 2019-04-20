@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Step Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxC-vM-IJy">
-                                <rect key="frame" x="16" y="194" width="398" height="18"/>
+                                <rect key="frame" x="16" y="194.33333333333334" width="398" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="KxC-vM-IJy" secondAttribute="height" multiplier="8:1" constant="254" id="Ocf-IL-xcl"/>
                                 </constraints>
@@ -39,15 +39,25 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="0.001" translatesAutoresizingMaskIntoConstraints="NO" id="xnm-ta-yJP">
                                 <rect key="frame" x="16" y="229.33333333333334" width="382" height="2.6666666666666572"/>
                             </progressView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAV-I8-srH" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="20" y="260" width="374" height="135.33333333333337"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="EAV-I8-srH" secondAttribute="height" multiplier="378:137" id="u46-Jg-C8Z"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="EAV-I8-srH" firstAttribute="top" secondItem="xnm-ta-yJP" secondAttribute="bottom" constant="29" id="Auw-Bu-j8R"/>
                             <constraint firstItem="biN-eM-teM" firstAttribute="top" secondItem="HIf-BB-cYY" secondAttribute="top" constant="30" id="CVR-IU-VRO"/>
                             <constraint firstItem="KxC-vM-IJy" firstAttribute="top" secondItem="biN-eM-teM" secondAttribute="bottom" constant="31" id="OAY-Id-mhw"/>
                             <constraint firstItem="HIf-BB-cYY" firstAttribute="trailing" secondItem="KxC-vM-IJy" secondAttribute="trailing" id="Ter-Uo-6NV"/>
                             <constraint firstItem="xnm-ta-yJP" firstAttribute="top" secondItem="KxC-vM-IJy" secondAttribute="bottom" constant="17" id="UQU-MX-uId"/>
+                            <constraint firstItem="HIf-BB-cYY" firstAttribute="trailing" secondItem="EAV-I8-srH" secondAttribute="trailing" constant="20" id="V9K-ej-gfS"/>
                             <constraint firstItem="HIf-BB-cYY" firstAttribute="trailing" secondItem="xnm-ta-yJP" secondAttribute="trailing" constant="16" id="hqh-4N-Ijf"/>
                             <constraint firstItem="biN-eM-teM" firstAttribute="leading" secondItem="HIf-BB-cYY" secondAttribute="leading" id="lM5-pW-pQq"/>
+                            <constraint firstItem="EAV-I8-srH" firstAttribute="leading" secondItem="HIf-BB-cYY" secondAttribute="leading" constant="20" id="rcZ-hv-Z0A"/>
                             <constraint firstItem="HIf-BB-cYY" firstAttribute="trailing" secondItem="biN-eM-teM" secondAttribute="trailing" id="re3-n2-vew"/>
                             <constraint firstItem="KxC-vM-IJy" firstAttribute="leading" secondItem="HIf-BB-cYY" secondAttribute="leading" constant="16" id="sLj-mU-MnF"/>
                             <constraint firstItem="xnm-ta-yJP" firstAttribute="leading" secondItem="HIf-BB-cYY" secondAttribute="leading" constant="16" id="vWB-p8-PMa"/>
@@ -63,6 +73,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="barChartView" destination="EAV-I8-srH" id="En5-0b-HQv"/>
                         <outlet property="profileButton" destination="R8K-ZO-Qut" id="Yej-lG-v43"/>
                         <outlet property="stepGoalLabel" destination="KxC-vM-IJy" id="3Qe-W9-mGg"/>
                         <outlet property="stepPBar" destination="xnm-ta-yJP" id="udD-lg-WbA"/>

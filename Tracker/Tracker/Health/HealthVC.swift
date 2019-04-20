@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 import HealthKit
+import Charts
 
 class HealthVC: UIViewController {
     
@@ -17,7 +18,10 @@ class HealthVC: UIViewController {
     @IBOutlet weak var profileButton: UIBarButtonItem!
     @IBOutlet weak var stepGoalLabel: UILabel!
     @IBOutlet weak var stepPBar: UIProgressView!
+    @IBOutlet weak var barChartView: BarChartView!
+    
     private var stepGoal = 1
+    private var barChartDataEntry: [BarChartDataEntry] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,8 +69,17 @@ class HealthVC: UIViewController {
                 self.stepPBar.progress = Float(steps/(self.stepGoal != 0 ? Double(self.stepGoal) : 1))
                 self.stepPBar.layer.borderColor  = UIColor.blue.cgColor
                 self.stepPBar.layer.borderWidth = 0.3
+                
+                //TODO MAKE SURE THAT THIS IS CORRECT AND FOR THE ENTIRE WEEK AND NOT JUST ONE DAY
+                self.barChartView.chartDescription?.text = "Steps walked in the past week"
+                self.barChartDataEntry.append(BarChartDataEntry(x: 1, y: steps))
+                let bcDataSet = BarChartDataSet(values: self.barChartDataEntry , label: nil)
+                let barChartData = BarChartData(dataSet: bcDataSet)
+                self.barChartView.data = barChartData
             }
         })
+        
+     
         
     }
     override func viewWillAppear(_ animated: Bool) {
