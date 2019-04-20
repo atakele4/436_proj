@@ -28,7 +28,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Step Goal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KxC-vM-IJy">
-                                <rect key="frame" x="16" y="194.33333333333334" width="144" height="18"/>
+                                <rect key="frame" x="16" y="194" width="398" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KxC-vM-IJy" secondAttribute="height" multiplier="8:1" constant="254" id="Ocf-IL-xcl"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,7 +44,7 @@
                         <constraints>
                             <constraint firstItem="biN-eM-teM" firstAttribute="top" secondItem="HIf-BB-cYY" secondAttribute="top" constant="30" id="CVR-IU-VRO"/>
                             <constraint firstItem="KxC-vM-IJy" firstAttribute="top" secondItem="biN-eM-teM" secondAttribute="bottom" constant="31" id="OAY-Id-mhw"/>
-                            <constraint firstItem="HIf-BB-cYY" firstAttribute="trailing" secondItem="KxC-vM-IJy" secondAttribute="trailing" constant="254" id="Ter-Uo-6NV"/>
+                            <constraint firstItem="HIf-BB-cYY" firstAttribute="trailing" secondItem="KxC-vM-IJy" secondAttribute="trailing" id="Ter-Uo-6NV"/>
                             <constraint firstItem="xnm-ta-yJP" firstAttribute="top" secondItem="KxC-vM-IJy" secondAttribute="bottom" constant="17" id="UQU-MX-uId"/>
                             <constraint firstItem="HIf-BB-cYY" firstAttribute="trailing" secondItem="xnm-ta-yJP" secondAttribute="trailing" constant="16" id="hqh-4N-Ijf"/>
                             <constraint firstItem="biN-eM-teM" firstAttribute="leading" secondItem="HIf-BB-cYY" secondAttribute="leading" id="lM5-pW-pQq"/>
@@ -69,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bt-fv-afM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1292" y="-614.84257871064472"/>
+            <point key="canvasLocation" x="1291.304347826087" y="-615.40178571428567"/>
         </scene>
         <!--Health ProfileVC-->
         <scene sceneID="QUe-41-sBD">

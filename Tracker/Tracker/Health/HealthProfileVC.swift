@@ -64,6 +64,10 @@ class HealthProfileVC: UIViewController {
             goodTF()
         }
         
+        if let stepsGoal = UserDefaults.standard.string(forKey: "healthStepGoal"){
+            stepGoalTF.text = stepsGoal
+        }
+        
         //setup a tap recognizer to resign first responder
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboardByTappingOutside))
         

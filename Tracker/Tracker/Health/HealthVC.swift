@@ -17,6 +17,7 @@ class HealthVC: UIViewController {
     @IBOutlet weak var profileButton: UIBarButtonItem!
     @IBOutlet weak var stepGoalLabel: UILabel!
     @IBOutlet weak var stepPBar: UIProgressView!
+    private var stepGoal = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +41,11 @@ class HealthVC: UIViewController {
         
         welcomeLabel.text = (userName == nil ? "  Welcome!" : " Welcome \(userName!)!")
         
+        self.stepGoal = Int(UserDefaults.standard.string(forKey: "healthStepGoal")!) ?? -1
+        
         do {
             let userAgeSexAndBloodType = try HKDataManager.getAgeSexBloodType()
-         
+            
             switch userAgeSexAndBloodType.bioSex {
             case .female: self.profileButton.title = "👩🏻"
             case .male: self.profileButton.title = "👨🏼"
@@ -54,6 +57,16 @@ class HealthVC: UIViewController {
             print("err: \(error.localizedDescription)")
             
         }
+        
+        HKDataManager.getSteps(completion:  { (steps) in
+            DispatchQueue.main.async {
+                
+                self.stepGoalLabel.text = "Daily Step Goal: \(steps)/\(self.stepGoal)"
+                self.stepPBar.progress = Float(steps/Double(self.stepGoal))
+                self.stepPBar.layer.borderColor  = UIColor.blue.cgColor
+                self.stepPBar.layer.borderWidth = 0.3
+            }
+        })
         
     }
     
