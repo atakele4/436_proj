@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7K5-bJ-Z23">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7K5-bJ-Z23">
     <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -149,21 +149,36 @@
             </objects>
             <point key="canvasLocation" x="2084" y="-615.74212893553226"/>
         </scene>
-        <!--HW-->
-        <scene sceneID="cRv-3D-FCi">
+        <!--HW/Assignment Tracker-->
+        <scene sceneID="gYU-tw-gpo">
             <objects>
-                <viewController id="Yed-Tr-AFI" customClass="HomeworkVC" customModule="Tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="o51-0Q-XX6">
+                <tableViewController id="Uvy-tg-Bgu" customClass="HWController" customModule="Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KTN-uo-rtk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="L9p-cZ-zO5"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="HW" image="literature" selectedImage="literature" id="k88-1O-3F3"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1pD-7B-zSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="sli-lO-aQu">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sli-lO-aQu" id="trD-pO-wyp">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Uvy-tg-Bgu" id="j3c-Q2-kc0"/>
+                            <outlet property="delegate" destination="Uvy-tg-Bgu" id="xli-Xb-vI1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="HW/Assignment Tracker" id="FTw-05-Q2M">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TSU-d2-qwd"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lFI-6B-mtu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="354" y="-1281"/>
+            <point key="canvasLocation" x="1366.6666666666667" y="-1356.0267857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Gnh-fc-5Ha">
@@ -175,7 +190,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Yed-Tr-AFI" kind="relationship" relationship="viewControllers" id="4ZH-fE-2CT"/>
+                        <segue destination="Xqk-cR-VfT" kind="relationship" relationship="viewControllers" id="JXY-Dk-Cbl"/>
                         <segue destination="7GY-o0-nkf" kind="relationship" relationship="viewControllers" id="htC-wV-zeY"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="AQo-mP-zhB"/>
                     </connections>
@@ -219,10 +234,28 @@
             </objects>
             <point key="canvasLocation" x="352.80000000000001" y="-614.84257871064472"/>
         </scene>
+        <!--HW-->
+        <scene sceneID="k0m-lh-k41">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xqk-cR-VfT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="HW" id="WJb-NR-hBk"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7Ip-5W-rdu">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Uvy-tg-Bgu" kind="relationship" relationship="rootViewController" id="HSl-Xr-EhD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ayA-pE-okh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="456.52173913043481" y="-1356.0267857142856"/>
+        </scene>
     </scenes>
     <resources>
         <image name="calendar" width="30" height="30"/>
         <image name="heart" width="30" height="30"/>
-        <image name="literature" width="30" height="30"/>
     </resources>
 </document>
