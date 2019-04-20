@@ -2,8 +2,8 @@
 //  Event_Cell.swift
 //  Calender_Event
 //
-//  Created by RJSQUARE INFOTECH on 18/04/19.
-//  Copyright © 2019 RJSQUARE INFOTECH. All rights reserved.
+//  Created by Abel Takele on 18/04/19.
+//  
 //
 
 import UIKit
