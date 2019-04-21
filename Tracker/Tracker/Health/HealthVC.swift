@@ -91,7 +91,7 @@ class HealthVC: UIViewController {
         HKDataManager.getSteps(completion:  { (steps) in
             DispatchQueue.main.async {
                 
-                self.stepGoalLabel.text = "Daily Step Goal: \(steps)/\(self.stepGoal)"
+                self.stepGoalLabel.text = "Daily Step Goal: \(Int(steps))/\(self.stepGoal)"
                 self.stepPBar.progress = Float(steps/(self.stepGoal != 0 ? Double(self.stepGoal) : 1))
                 self.stepPBar.layer.borderColor  = UIColor.blue.cgColor
                 self.stepPBar.layer.borderWidth = 0.3
