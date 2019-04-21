@@ -39,14 +39,18 @@ class HealthVC: UIViewController {
             UserDefaults.standard.set(true, forKey: "firstTime")
         }
         
+        //get the users name
         let userName = UserDefaults.standard.string(forKey: "healthUserName")
         
+        //set the titles of everything based on if they exist or not
         titleBar.title = (userName == nil ? "Setup your user profile ->" : userName)
         
         welcomeLabel.text = (userName == nil ? "  Welcome!" : " Welcome \(userName!)!")
         
+        //update the step goal if it exists
         self.stepGoal = Int(UserDefaults.standard.string(forKey: "healthStepGoal") ?? "1") ?? -1
         
+        //set profile button to male or female depending on the what is known in health kit
         do {
             let userAgeSexAndBloodType = try HKDataManager.getAgeSexBloodType()
             
@@ -75,11 +79,15 @@ class HealthVC: UIViewController {
         barChartView.rightAxis.drawGridLinesEnabled = false
         barChartView.rightAxis.drawAxisLineEnabled = false
         
+        //no zoom
+        barChartView.isUserInteractionEnabled = false
+        
+        //make numbers ints
         self.barChartView.noDataText = "You haven't walked this week :/"
         self.barChartView.data = barChartData
         self.barChartView.xAxis.granularity = 1
         
-        
+        //make sure to update the progressbar
         HKDataManager.getSteps(completion:  { (steps) in
             DispatchQueue.main.async {
                 
@@ -91,10 +99,13 @@ class HealthVC: UIViewController {
             }
         })
         
-        
+        //import the data into the graph
+        //we can send the view into the param but thats
+        //the model accessing the view which is bad
         importStepsHistoryOneWeek()
     }
     
+    //loads one week of data into the view
     func importStepsHistoryOneWeek() {
         let healthStore = HKHealthStore()
         let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
@@ -134,7 +145,6 @@ class HealthVC: UIViewController {
         healthStore.execute(query)
     }
 
-    
     override func viewWillDisappear(_ animated: Bool) {
         loadData()
     }
