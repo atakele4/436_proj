@@ -21,7 +21,7 @@ class HealthVC: UIViewController {
     @IBOutlet weak var barChartView: BarChartView!
     
     private var stepGoal = 1
-    private var barChartDataEntry: [BarChartDataEntry] = []
+    private var bcDataEntry: [BarChartDataEntry] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class HealthVC: UIViewController {
     }
     
     func loadData(){
-        
+        print("Loading Data: \(Date())")
         let firstTime = UserDefaults.standard.bool(forKey: "firstTime")
         
         //if its the firsttime setup
@@ -62,6 +62,24 @@ class HealthVC: UIViewController {
             
         }
         
+        //set the data source to the array of data entries
+        let bcDataSet = BarChartDataSet(values: self.bcDataEntry , label: "Steps Taken")
+        bcDataSet.colors = [UIColor.red]
+        let barChartData = BarChartData(dataSet: bcDataSet)
+        
+        //set grindlines to nothing
+        barChartView.leftAxis.drawAxisLineEnabled = false
+        barChartView.leftAxis.drawGridLinesEnabled = false
+        barChartView.leftAxis.drawLabelsEnabled = false
+        
+        barChartView.rightAxis.drawGridLinesEnabled = false
+        barChartView.rightAxis.drawAxisLineEnabled = false
+        
+        self.barChartView.noDataText = "You haven't walked this week :/"
+        self.barChartView.data = barChartData
+        self.barChartView.xAxis.granularity = 1
+        
+        
         HKDataManager.getSteps(completion:  { (steps) in
             DispatchQueue.main.async {
                 
@@ -70,23 +88,52 @@ class HealthVC: UIViewController {
                 self.stepPBar.layer.borderColor  = UIColor.blue.cgColor
                 self.stepPBar.layer.borderWidth = 0.3
                 
-                
-                
-                //TODO MAKE SURE THAT THIS IS CORRECT AND FOR THE ENTIRE WEEK AND NOT JUST ONE DAY
-                self.barChartView.chartDescription?.text = "Steps walked in the past week"
-                self.barChartDataEntry.append(BarChartDataEntry(x: 1, y: steps))
-                let bcDataSet = BarChartDataSet(values: self.barChartDataEntry , label: nil)
-                let barChartData = BarChartData(dataSet: bcDataSet)
-                self.barChartView.data = barChartData
             }
         })
         
-     
         
+        importStepsHistoryOneWeek()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        loadData()
+    
+    func importStepsHistoryOneWeek() {
+        let healthStore = HKHealthStore()
+        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+        
+        let now = Date()
+        let startDate = Calendar.current.date(byAdding: .day, value: -7, to: now)!
+        
+        var interval = DateComponents()
+        interval.day = 1
+        
+        var anchorComponents = Calendar.current.dateComponents([.day, .month, .year], from: now)
+        anchorComponents.hour = 0
+        let anchorDate = Calendar.current.date(from: anchorComponents)!
+        
+        let query = HKStatisticsCollectionQuery(quantityType: stepsQuantityType,
+                                                quantitySamplePredicate: nil,
+                                                options: [.cumulativeSum],
+                                                anchorDate: anchorDate,
+                                                intervalComponents: interval)
+        query.initialResultsHandler = { _, results, error in
+            guard let results = results else {
+                print("ERROR")
+                return
+            }
+            var day = 1
+            results.enumerateStatistics(from: startDate, to: now) { statistics, _ in
+                if let sum = statistics.sumQuantity() {
+                    let steps = sum.doubleValue(for: HKUnit.count())
+                    self.bcDataEntry.append(BarChartDataEntry(x: Double(day), y: steps))
+                    
+                    //  print("Amount of steps: \(steps), date: \(statistics.startDate)")
+                    day = day + 1
+                }
+            }
+        }
+        
+        healthStore.execute(query)
     }
+
     
     override func viewWillDisappear(_ animated: Bool) {
         loadData()
