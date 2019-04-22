@@ -23,7 +23,7 @@ class HWData {
     
     //remove tasks
     
-    func remove(at index: Int, isDone:Bool = false)-> HWTask{
+    @discardableResult func remove(at index: Int, isDone:Bool = false)-> HWTask{
         
         
         let section = isDone ? 1 : 0

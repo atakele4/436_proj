@@ -13,7 +13,7 @@ class HWTask {
     var taskName : String
     var isDone : Bool
     
-    init(name: String, isDone: Bool){
+    init(name: String, isDone: Bool = false){
         self.taskName = name
         self.isDone = false
     }
