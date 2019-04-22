@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+class HWTask {
+    
+    var taskName : String
+    var isDone : Bool
+    
+    init(name: String, isDone: Bool){
+        self.taskName = name
+        self.isDone = false
+    }
+}

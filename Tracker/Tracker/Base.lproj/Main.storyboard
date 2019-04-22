@@ -173,8 +173,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="HW/Assignment Tracker" id="FTw-05-Q2M">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TSU-d2-qwd"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TSU-d2-qwd">
+                            <connections>
+                                <action selector="addAction:" destination="Uvy-tg-Bgu" id="HCA-QF-MeA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addButton" destination="TSU-d2-qwd" id="FMw-9R-gMv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFI-6B-mtu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -238,7 +245,7 @@
         <scene sceneID="k0m-lh-k41">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xqk-cR-VfT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="HW" id="WJb-NR-hBk"/>
+                    <tabBarItem key="tabBarItem" title="HW" image="literature" id="WJb-NR-hBk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7Ip-5W-rdu">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -257,5 +264,6 @@
     <resources>
         <image name="calendar" width="30" height="30"/>
         <image name="heart" width="30" height="30"/>
+        <image name="literature" width="30" height="30"/>
     </resources>
 </document>
