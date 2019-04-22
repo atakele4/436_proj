@@ -15,6 +15,8 @@
 		24F0785622695AB800F55D69 /* HealthProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F0785522695AB800F55D69 /* HealthProfileVC.swift */; };
 		5C5528DCE155517C06FEAB26 /* Pods_Tracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE044EFD178F32B57AEF50C6 /* Pods_Tracker.framework */; };
 		62839A26226B5DCC00BA55F3 /* HWController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62839A25226B5DCC00BA55F3 /* HWController.swift */; };
+		62839A28226B630D00BA55F3 /* HWTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62839A27226B630D00BA55F3 /* HWTask.swift */; };
+		62839A2A226B641200BA55F3 /* HWData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62839A29226B641200BA55F3 /* HWData.swift */; };
 		628E547022611E5600AD4704 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628E546F22611E5600AD4704 /* AppDelegate.swift */; };
 		628E547222611E5600AD4704 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628E547122611E5600AD4704 /* ViewController.swift */; };
 		628E547522611E5600AD4704 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 628E547322611E5600AD4704 /* Main.storyboard */; };
@@ -53,6 +55,8 @@
 		24F0785522695AB800F55D69 /* HealthProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthProfileVC.swift; sourceTree = "<group>"; };
 		463A6E1B53FEB58E4C367B66 /* Pods-TrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrackerTests/Pods-TrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		62839A25226B5DCC00BA55F3 /* HWController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HWController.swift; sourceTree = "<group>"; };
+		62839A27226B630D00BA55F3 /* HWTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HWTask.swift; sourceTree = "<group>"; };
+		62839A29226B641200BA55F3 /* HWData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HWData.swift; sourceTree = "<group>"; };
 		628E546C22611E5600AD4704 /* Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		628E546F22611E5600AD4704 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		628E547122611E5600AD4704 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				628E547122611E5600AD4704 /* ViewController.swift */,
 				62839A25226B5DCC00BA55F3 /* HWController.swift */,
 				628E547322611E5600AD4704 /* Main.storyboard */,
+				62839A27226B630D00BA55F3 /* HWTask.swift */,
+				62839A29226B641200BA55F3 /* HWData.swift */,
 				2476CE7C226120C20081543C /* CalendarVC.swift */,
 				628E547622611E5700AD4704 /* Assets.xcassets */,
 				628E547822611E5700AD4704 /* LaunchScreen.storyboard */,
@@ -438,6 +444,8 @@
 				24D774D122663A800083CD29 /* HealthKitSetupManager.swift in Sources */,
 				248F768F2268DB2E000503BD /* HKDataManager.swift in Sources */,
 				2476CE7D226120C20081543C /* CalendarVC.swift in Sources */,
+				62839A28226B630D00BA55F3 /* HWTask.swift in Sources */,
+				62839A2A226B641200BA55F3 /* HWData.swift in Sources */,
 				628E547022611E5600AD4704 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
