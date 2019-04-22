@@ -16,6 +16,7 @@ class HealthProfileVC: UIViewController {
     
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var stepGoalTF: UITextField!
+    @IBOutlet weak var sleepGoalTF: UITextField!
     
     @IBOutlet weak var hkBTN: UIButton!
     
@@ -61,6 +62,7 @@ class HealthProfileVC: UIViewController {
         //add an observer for the tf change
         nameTF.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
+        //check if Userdefaults has a key for the usrename
         if let un = UserDefaults.standard.string(forKey: "healthUserName"){
             nameTF.text = un
             goodTF()
@@ -68,6 +70,10 @@ class HealthProfileVC: UIViewController {
         
         if let stepsGoal = UserDefaults.standard.string(forKey: "healthStepGoal"){
             stepGoalTF.text = stepsGoal
+        }
+        
+        if let sleepGoal = UserDefaults.standard.string(forKey: "healthSleepGoal"){
+            sleepGoalTF.text = sleepGoal
         }
         
         //setup a tap recognizer to resign first responder
@@ -79,13 +85,14 @@ class HealthProfileVC: UIViewController {
     
     //resign first responder and change the color of it
     @objc func hideKeyboardByTappingOutside() {
-        print("BRO YOU TAPPED?")
+        
         if nameTF.text != nil && nameTF.text != "" {
             goodTF()
         } else {
             errorTF()
         }
-       
+        
+        //resign the keyboard
         resignFirstResponder()
         self.view.endEditing(true)
     }
@@ -102,6 +109,24 @@ class HealthProfileVC: UIViewController {
             
             if stepGoalTF.text != nil && stepGoalTF.text != "" {
                 UserDefaults.standard.set(stepGoalTF.text , forKey: "healthStepGoal")
+            }
+            
+            if sleepGoalTF.text != nil && sleepGoalTF.text != "" {
+                
+                if let g = sleepGoalTF.text {
+                    if Int(g)! > 0 && Int(g)! < 24 {
+                        UserDefaults.standard.set(sleepGoalTF.text , forKey: "healthSleepGoal")
+                    } else {
+                        sleepGoalTF.layer.borderColor = UIColor.red.cgColor
+                        sleepGoalTF.layer.borderWidth = 2
+                        sleepGoalTF.layer.cornerRadius = 3
+                        sleepGoalTF.text = ""
+                        sleepGoalTF.placeholder = "Goal must be between 0 and 24 hrs."
+                        return
+                    }
+                }
+                
+                
             }
             
             self.navigationController?.popViewController(animated: true)
@@ -125,5 +150,5 @@ class HealthProfileVC: UIViewController {
         nameTF.placeholder = "THIS FIELD IS REQUIRED"
     }
     
-   
+    
 }

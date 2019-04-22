@@ -17,6 +17,7 @@ class HealthVC: UIViewController {
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var profileButton: UIBarButtonItem!
     @IBOutlet weak var stepGoalLabel: UILabel!
+    @IBOutlet weak var sleepGoalLabel: UILabel!
     @IBOutlet weak var stepPBar: UIProgressView!
     @IBOutlet weak var barChartView: BarChartView!
     
@@ -26,6 +27,7 @@ class HealthVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //load data upn loading the view
         loadData()
     }
     
@@ -106,33 +108,42 @@ class HealthVC: UIViewController {
     }
     
     //loads one week of data into the view
+    //Source: https://stackoverflow.com/questions/50620547/how-to-get-apple-health-data-by-date-wise
     func importStepsHistoryOneWeek() {
         let healthStore = HKHealthStore()
         let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
         
+        //get a week's worth of data
         let now = Date()
         let startDate = Calendar.current.date(byAdding: .day, value: -7, to: now)!
         
+        //set the interval to a 1 day interval
         var interval = DateComponents()
         interval.day = 1
         
+        //get the other parts of the date
         var anchorComponents = Calendar.current.dateComponents([.day, .month, .year], from: now)
         anchorComponents.hour = 0
         let anchorDate = Calendar.current.date(from: anchorComponents)!
         
-        let query = HKStatisticsCollectionQuery(quantityType: stepsQuantityType,
-                                                quantitySamplePredicate: nil,
-                                                options: [.cumulativeSum],
-                                                anchorDate: anchorDate,
-                                                intervalComponents: interval)
+        //create a query for health kit
+        let query = HKStatisticsCollectionQuery(quantityType: stepsQuantityType, quantitySamplePredicate: nil, options: [.cumulativeSum], anchorDate: anchorDate, intervalComponents: interval)
+        
+        //get the initial results from the callback
         query.initialResultsHandler = { _, results, error in
             guard let results = results else {
                 print("ERROR")
                 return
             }
             var day = 1
+            
+            //go through all of the data
             results.enumerateStatistics(from: startDate, to: now) { statistics, _ in
+                
+                //get the steps from the data
                 if let sum = statistics.sumQuantity() {
+                    
+                    //add the data to the graph
                     let steps = sum.doubleValue(for: HKUnit.count())
                     self.bcDataEntry.append(BarChartDataEntry(x: Double(day), y: steps))
                     
@@ -142,12 +153,16 @@ class HealthVC: UIViewController {
             }
         }
         
+        //execute the query
         healthStore.execute(query)
     }
 
+    //reload on closing so that it so fresh when it comes back
     override func viewWillDisappear(_ animated: Bool) {
         loadData()
     }
+    
+    //when the view is to the front the data]
     override func viewDidAppear(_ animated: Bool) {
         loadData()
     }

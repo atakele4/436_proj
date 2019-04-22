@@ -41,14 +41,25 @@
                             </progressView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EAV-I8-srH" customClass="BarChartView" customModule="Charts">
                                 <rect key="frame" x="20" y="260" width="374" height="135.33333333333337"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="EAV-I8-srH" secondAttribute="height" multiplier="378:137" id="u46-Jg-C8Z"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nightly Sleep Goal " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGL-Eg-ZNW">
+                                <rect key="frame" x="20" y="438" width="374" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SGL-Eg-ZNW" secondAttribute="height" multiplier="374:21" id="y8J-eL-lQS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="SGL-Eg-ZNW" firstAttribute="top" secondItem="EAV-I8-srH" secondAttribute="bottom" constant="42.666666666666629" id="3Sx-z2-EX2"/>
+                            <constraint firstItem="SGL-Eg-ZNW" firstAttribute="leading" secondItem="HIf-BB-cYY" secondAttribute="leading" constant="20" id="9pD-nP-7Gd"/>
                             <constraint firstItem="EAV-I8-srH" firstAttribute="top" secondItem="xnm-ta-yJP" secondAttribute="bottom" constant="29" id="Auw-Bu-j8R"/>
                             <constraint firstItem="biN-eM-teM" firstAttribute="top" secondItem="HIf-BB-cYY" secondAttribute="top" constant="30" id="CVR-IU-VRO"/>
                             <constraint firstItem="KxC-vM-IJy" firstAttribute="top" secondItem="biN-eM-teM" secondAttribute="bottom" constant="31" id="OAY-Id-mhw"/>
@@ -57,6 +68,7 @@
                             <constraint firstItem="HIf-BB-cYY" firstAttribute="trailing" secondItem="EAV-I8-srH" secondAttribute="trailing" constant="20" id="V9K-ej-gfS"/>
                             <constraint firstItem="HIf-BB-cYY" firstAttribute="trailing" secondItem="xnm-ta-yJP" secondAttribute="trailing" constant="16" id="hqh-4N-Ijf"/>
                             <constraint firstItem="biN-eM-teM" firstAttribute="leading" secondItem="HIf-BB-cYY" secondAttribute="leading" id="lM5-pW-pQq"/>
+                            <constraint firstItem="HIf-BB-cYY" firstAttribute="trailing" secondItem="SGL-Eg-ZNW" secondAttribute="trailing" constant="20" id="mMV-al-Oec"/>
                             <constraint firstItem="EAV-I8-srH" firstAttribute="leading" secondItem="HIf-BB-cYY" secondAttribute="leading" constant="20" id="rcZ-hv-Z0A"/>
                             <constraint firstItem="HIf-BB-cYY" firstAttribute="trailing" secondItem="biN-eM-teM" secondAttribute="trailing" id="re3-n2-vew"/>
                             <constraint firstItem="KxC-vM-IJy" firstAttribute="leading" secondItem="HIf-BB-cYY" secondAttribute="leading" constant="16" id="sLj-mU-MnF"/>
@@ -75,6 +87,7 @@
                     <connections>
                         <outlet property="barChartView" destination="EAV-I8-srH" id="En5-0b-HQv"/>
                         <outlet property="profileButton" destination="R8K-ZO-Qut" id="Yej-lG-v43"/>
+                        <outlet property="sleepGoalLabel" destination="SGL-Eg-ZNW" id="CzP-B5-8Yf"/>
                         <outlet property="stepGoalLabel" destination="KxC-vM-IJy" id="3Qe-W9-mGg"/>
                         <outlet property="stepPBar" destination="xnm-ta-yJP" id="udD-lg-WbA"/>
                         <outlet property="titleBar" destination="hJ7-uk-UWz" id="8JL-QB-XIk"/>
@@ -121,6 +134,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Daily Sleep Goal (hrs)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="88r-Iw-G2I">
+                                <rect key="frame" x="0.0" y="333" width="414" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -131,7 +150,10 @@
                             <constraint firstItem="Tso-XS-G5V" firstAttribute="trailing" secondItem="st2-pT-zVe" secondAttribute="trailing" id="Sl7-ac-1jw"/>
                             <constraint firstItem="uQa-dX-zam" firstAttribute="top" secondItem="Tso-XS-G5V" secondAttribute="bottom" constant="32" id="Y9q-nT-sYP"/>
                             <constraint firstItem="uQa-dX-zam" firstAttribute="leading" secondItem="st2-pT-zVe" secondAttribute="leading" id="bfX-pQ-wGn"/>
+                            <constraint firstItem="88r-Iw-G2I" firstAttribute="top" secondItem="uQa-dX-zam" secondAttribute="bottom" constant="32" id="ddq-Vf-0gY"/>
                             <constraint firstItem="Uka-sr-HjN" firstAttribute="centerY" secondItem="st2-pT-zVe" secondAttribute="centerY" id="eAq-tP-GKz"/>
+                            <constraint firstItem="88r-Iw-G2I" firstAttribute="leading" secondItem="st2-pT-zVe" secondAttribute="leading" id="ie1-2B-jyl"/>
+                            <constraint firstItem="st2-pT-zVe" firstAttribute="trailing" secondItem="88r-Iw-G2I" secondAttribute="trailing" id="led-7u-VM7"/>
                             <constraint firstItem="4Xc-s7-1bL" firstAttribute="leading" secondItem="st2-pT-zVe" secondAttribute="leading" constant="117" id="rpe-hY-J50"/>
                             <constraint firstItem="Tso-XS-G5V" firstAttribute="leading" secondItem="st2-pT-zVe" secondAttribute="leading" id="w9a-5J-Tq1"/>
                             <constraint firstItem="st2-pT-zVe" firstAttribute="trailing" secondItem="uQa-dX-zam" secondAttribute="trailing" id="xnq-1G-M7h"/>
@@ -142,6 +164,7 @@
                     <connections>
                         <outlet property="hkBTN" destination="Uka-sr-HjN" id="LiO-iQ-aRy"/>
                         <outlet property="nameTF" destination="Tso-XS-G5V" id="rtH-bH-yfj"/>
+                        <outlet property="sleepGoalTF" destination="88r-Iw-G2I" id="FWk-AM-1qU"/>
                         <outlet property="stepGoalTF" destination="uQa-dX-zam" id="744-Wz-oQj"/>
                     </connections>
                 </viewController>
