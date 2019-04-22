@@ -62,6 +62,7 @@ class HKDataManager {
         
     }
     
+    
     func bloodstringRepresentation(t: HKBloodType) -> String {
         var r:String = ""
         switch t {

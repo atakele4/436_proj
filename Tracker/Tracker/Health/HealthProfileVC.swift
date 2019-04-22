@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Charts
+import HealthKit
 
 class HealthProfileVC: UIViewController {
     
@@ -124,4 +125,5 @@ class HealthProfileVC: UIViewController {
         nameTF.placeholder = "THIS FIELD IS REQUIRED"
     }
     
+   
 }
